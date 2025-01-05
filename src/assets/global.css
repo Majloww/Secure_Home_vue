@@ -1,0 +1,38 @@
+/* src/assets/global.css */
+body {
+    background-color: wheat !important;
+    /*
+    forced
+    */
+}
+
+p {
+    font-size: large;
+    font-weight: 600;
+}
+
+a {
+    text-decoration: none;
+}
+
+h1 {
+    font-weight: bold;
+    color: darkgreen;
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-weight: bold;
+}
+
+/* Add @keyframes here */
+@keyframes fadeInAnimation {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes blinker {
+    from { opacity: 1.0; }
+    50% { opacity: 0.3; }
+    to { opacity: 1.0; }
+}

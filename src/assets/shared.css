@@ -1,0 +1,12 @@
+/* src/assets/shared.css */
+.list-group-item {
+    border-color: #343a40;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.blink {
+    animation: blinker 1.5s linear infinite;
+}
