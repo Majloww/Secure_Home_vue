@@ -41,7 +41,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <span class="dropdown-item-text">{{ username }}</span>
-            <hr />
+            <hr/>
             <router-link class="dropdown-item" to="/profile">Profile</router-link>
             <router-link class="dropdown-item" to="/cart">Cart</router-link>
             <router-link class="dropdown-item" to="/qaa">Q&A</router-link>
@@ -72,6 +72,7 @@ export default {
 .navbar .nav-link {
   color: white;
 }
+
 .navbar .nav-link.active {
   font-weight: bold;
   color: #ffc107; /* Highlight color for active links */

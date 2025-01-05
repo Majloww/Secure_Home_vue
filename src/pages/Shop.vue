@@ -1,6 +1,6 @@
 <template>
-  <h1>Shop</h1>
   <div v-if="products.length > 0" class="container">
+    <br><br>
     <div class="row">
       <div class="col-md-4" v-for="product in products" :key="product.product_id">
         <div class="card">
