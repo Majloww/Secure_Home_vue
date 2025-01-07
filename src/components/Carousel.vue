@@ -32,5 +32,7 @@ export default {
 </script>
 
 <style scoped>
-/* Add carousel-specific styles here */
+.carousel-item {
+  height: 730px;
+}
 </style>

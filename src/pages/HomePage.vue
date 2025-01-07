@@ -72,12 +72,6 @@ export default {
   text-align: center;
 }
 
-.carousel-img {
-  width: auto;
-  height: 700px;
-}
-
-
 .blink {
   animation: blink-animation 1.5s infinite;
 }

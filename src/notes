@@ -1,8 +1,11 @@
 dorobit aby header aj footer bol na celu dlzku obrazovky
 
-from shop display notification when added to cart
-make maths for number of same items added to cart
+DONE make maths for number of same items added to cart.
+DONE add plus and minus buttons to add or remove by one item in cart and add remove to remove each of the same item from cart
 
+DONE on refresh keep the items in the cart.
+create order button
+after order throw all out and maybe remove them from database
 
 .container urobit wheat color, body urobit dark gray
 
@@ -10,4 +13,3 @@ add:
 Derived State with Getters:
 
     Calculate totals, tax, or discounts dynamically without duplicating logic in multiple components.
-
