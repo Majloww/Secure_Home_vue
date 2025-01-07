@@ -34,6 +34,6 @@ export default {
 footer {
   background-color: #343a40;
   margin-top: 50px;
-  padding-top: 50px;
+  padding-top: 20px;
   color: white;
 }</style>

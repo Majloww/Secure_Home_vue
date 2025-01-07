@@ -1,1 +1,13 @@
 dorobit aby header aj footer bol na celu dlzku obrazovky
+
+from shop display notification when added to cart
+make maths for number of same items added to cart
+
+
+.container urobit wheat color, body urobit dark gray
+
+add:
+Derived State with Getters:
+
+    Calculate totals, tax, or discounts dynamically without duplicating logic in multiple components.
+

@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col text-center">
+          <div class="col text-center my-5">
             <h4 class="blink">Join us in creating a safer world, one home at a time.</h4>
           </div>
         </div>
@@ -66,10 +66,6 @@ export default {
 </script>
 
 <style scoped>
-#main-cont {
-  margin-top: 100px;
-}
-
 #desc-cont {
   margin-top: 100px;
   margin-bottom: 200px;

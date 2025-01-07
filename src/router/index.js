@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from "@/pages/HomePage.vue";  // Your main home page component
 import Shop from "@/pages/Shop.vue";
 import reviewPage from "@/pages/ReviewPage.vue";
+import Cart from "@/pages/Cart.vue";
 
 // Define the routes
 const routes = [
@@ -20,6 +21,11 @@ const routes = [
         path: '/review',
         name: 'Review',
         component: reviewPage
+    },
+    {
+        path: '/cart',
+        name: 'Cart',
+        component: Cart
     }
 ];
 

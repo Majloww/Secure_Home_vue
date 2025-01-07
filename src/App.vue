@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header />
+    <Header/>
     <router-view></router-view>
-    <Footer />
+    <Footer/>
   </div>
 </template>
 
@@ -16,6 +16,19 @@ export default {
 };
 </script>
 
-<style>
-/* Add any global styles here */
+<style scoped>
+/* Ensure the body has no horizontal overflow */
+body {
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  width: 100%; /* Full width of its container */
+  max-width: 100%; /* Prevents any overflow */
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
 </style>

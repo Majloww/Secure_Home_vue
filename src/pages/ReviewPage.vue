@@ -1,5 +1,5 @@
 <template>
-  <div class="container" id="review-cont">
+  <div class="container" id="main-cont">
     <form @submit.prevent="submitReview">
       <div class="form-group">
         <label for="choice">Country</label>

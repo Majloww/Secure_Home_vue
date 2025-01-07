@@ -1,5 +1,5 @@
 <template>
-  <div v-if="products.length > 0" class="container">
+  <div v-if="products.length > 0" class="container" id="main-cont">
     <br><br>
     <div class="row">
       <div class="col-md-4" v-for="product in products" :key="product.product_id">
@@ -63,6 +63,10 @@ export default {
 </script>
 
 <style scoped>
+#main-cont {
+  margin-top: 20px;
+}
+
 .card {
   margin-bottom: 20px;
 }

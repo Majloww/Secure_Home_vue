@@ -28,6 +28,9 @@
         <li class="nav-item">
           <router-link class="nav-link" to="/review" active-class="active">Review</router-link>
         </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/cart" active-class="active">Cart</router-link>
+        </li>
         <li class="nav-item dropdown">
           <a
               class="nav-link dropdown-toggle"
@@ -43,7 +46,6 @@
             <span class="dropdown-item-text">{{ username }}</span>
             <hr/>
             <router-link class="dropdown-item" to="/profile">Profile</router-link>
-            <router-link class="dropdown-item" to="/cart">Cart</router-link>
             <router-link class="dropdown-item" to="/qaa">Q&A</router-link>
             <router-link class="dropdown-item" to="/review">Review</router-link>
             <router-link v-if="isAdmin" class="dropdown-item" to="/users">Users</router-link>
@@ -75,6 +77,6 @@ export default {
 
 .navbar .nav-link.active {
   font-weight: bold;
-  color: #ffc107; /* Highlight color for active links */
+  color: gold; /* Highlight color for active links */
 }
 </style>
