@@ -1,44 +1,14 @@
 <?php
-header("Access-Control-Allow-Origin: *");  // Umožňuje prístup z akéhokoľvek zdroja
-header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");  // Umožňuje tieto HTTP metódy
-header("Access-Control-Allow-Headers: Content-Type, Authorization");  // Umožňuje tieto hlavičky
+require_once 'db_connect.php';
 
-header('Content-Type: application/json');
+try {
+    $sql = "SELECT product_id, title, description, price, quantity FROM products";
+    $stmt = $pdo->query($sql);
 
-// Your database connection details
-$servername = "localhost";
-$username = "root";  // replace with your database username
-$password = "";  // replace with your database password
-$dbname = "ukf-eshop";  // replace with your database name
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die(json_encode(['error' => 'Connection failed: ' . $conn->connect_error]));
-}
-
-// SQL query to fetch products
-$sql = "SELECT product_id, title, description, price, quantity FROM products";
-$result = $conn->query($sql);
-
-// Check if there are products
-if ($result->num_rows > 0) {
-    $products = [];
-
-    // Fetch data into an array
-    while ($row = $result->fetch_assoc()) {
-        $products[] = $row;
-    }
-
-    // Return the products as JSON
     echo json_encode($products);
-} else {
-    // If no products found, return an empty array
-    echo json_encode([]);
+} catch (PDOException $e) {
+    echo json_encode(['error' => 'Query failed: ' . $e->getMessage()]);
 }
-
-// Close connection
-$conn->close();
 ?>

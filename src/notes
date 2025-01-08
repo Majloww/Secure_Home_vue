@@ -4,6 +4,8 @@ DONE make maths for number of same items added to cart.
 DONE add plus and minus buttons to add or remove by one item in cart and add remove to remove each of the same item from cart
 
 DONE on refresh keep the items in the cart.
+DONE create review, write into db
+when GETting reviews from db, need endpoint in refreshreviews reviewpage
 create order button
 after order throw all out and maybe remove them from database
 

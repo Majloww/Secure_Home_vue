@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { handleStarClick } from "@/utils/rating";
+import {handleStarClick} from "@/utils/rating";
 
 export default {
   mounted() {
@@ -83,27 +83,43 @@ export default {
       this.reviewData.rating = rating;
     },
     async submitReview() {
+      console.log("Submitted")
       try {
         if (!this.reviewData.agree) {
           alert("You must agree to the terms to submit a review.");
           return;
         }
 
-        const response = await fetch("/api/reviews", {
+        //DEBUG SEND DATA TO DB
+        console.log("Sending data:", this.reviewData);
+
+        const response = await fetch("http://localhost/eshop/submit-review.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(this.reviewData),
+          body: JSON.stringify({
+            choice: this.reviewData.choice, // Country ID
+            rating: this.reviewData.rating, // Rating (1-5)
+            comment: this.reviewData.comment, // User's review comment
+          }),
         });
 
-        if (response.ok) {
+        const result = await response.json();
+
+        if (result.success) {
           this.showPopup = true;
+
+          // Wait for a moment and refresh the page after showing the popup
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000); // Adjust timeout as needed
         } else {
-          alert("An error occurred. Please try again.");
+          alert(result.error || "An error occurred. Please try again.");
         }
       } catch (error) {
         console.error("Error submitting review:", error);
+        alert("An error occurred. Please try again.");
       }
     },
     hidePopup() {
