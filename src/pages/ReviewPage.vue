@@ -109,11 +109,8 @@ export default {
 
         if (result.success) {
           this.showPopup = true;
-
-          // Wait for a moment and refresh the page after showing the popup
-          setTimeout(() => {
-            window.location.reload();
-          }, 2000); // Adjust timeout as needed
+          // Reset form data
+          this.reviewData = { choice: "", rating: 0, comment: "", agree: false };
         } else {
           alert(result.error || "An error occurred. Please try again.");
         }
@@ -124,9 +121,8 @@ export default {
     },
     hidePopup() {
       this.showPopup = false;
-      this.$router.push("/");
     },
-  },
+  }
 };
 </script>
 
@@ -268,4 +264,31 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#popup {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 300px;
+}
+
+#popup button {
+  margin-top: 20px;
+}
+
 </style>
