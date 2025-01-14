@@ -17,6 +17,9 @@ Welcome to **Secure Home e-shop**, an imaginary workshop with plenty of products
 - CSS (used for styling)
 - PHP (access to shop items and reviews)
 - JavaScript (for responsive stuff)
+- Database: (MySQL)
+- Version Control: Git, GitHub
+- Development Tools: PHPStorm
 
 See [Vite Configuration Reference](https://vite.dev/config/).
 
