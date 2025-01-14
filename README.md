@@ -1,10 +1,12 @@
-# secure_home
+# Secure Home eshop
 
-This template should help get you started developing with Vue 3 in Vite.
+---
 
-## Recommended IDE Setup
+Welcome to **Secure Home e-shop**, an imaginary workshop with plenty of products to choose from, created as my school project for Frontend Technologies class!
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Featuring:
+
+- Home page: Here, you`ll learn something about this e-shop
 
 ## Customize configuration
 
