@@ -8,6 +8,9 @@
           <option value="1">Slovakia</option>
           <option value="2">United Kingdom</option>
           <option value="3">Czech Republic</option>
+          <option value="4">Germany</option>
+          <option value="5">France</option>
+          <option value="6">Croatia</option>
         </select>
       </div>
       <br/>
@@ -290,5 +293,4 @@ input:checked + .slider:before {
 #popup button {
   margin-top: 20px;
 }
-
 </style>

@@ -1,7 +1,6 @@
 <template>
   <div class="container" id="main-cont">
     <div id="main-page">
-      <!-- Include Carousel -->
       <Carousel/>
 
       <!-- Description Section -->

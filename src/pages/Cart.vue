@@ -18,7 +18,7 @@
         <div class="col-md-3 text-end">
           <p>Price: ${{ item.price }}</p>
 
-          <!-- Quantity control -->
+          <!-- Quantity -->
           <div class="quantity-controls">
             <button class="btn btn-secondary" @click="decreaseQuantity(item)">-</button>
             <span class="quantity">{{ item.quantity }}</span>
@@ -30,9 +30,20 @@
         </div>
       </div>
 
-      <!-- Total price section -->
+      <!-- Total price -->
       <div class="total-price text-end">
         <h3>Total: ${{ totalPrice.toFixed(2) }}</h3>
+      </div>
+
+      <!-- Order button -->
+      <div class="text-end">
+        <button @click="placeOrder" class="btn btn-success mt-3">Place Order</button>
+      </div>
+
+      <!-- Popup order confirmation -->
+      <div v-if="showPopup" class="popup">
+        <p>Order has been sent successfully!</p>
+        <button @click="closePopup" class="btn btn-primary mt-2">Close</button>
       </div>
     </div>
 
@@ -44,50 +55,77 @@
 
 <script>
 import { useCartStore } from "@/stores/cart";
+import { useRouter } from "vue-router";
 
 export default {
   name: "Cart",
+  data() {
+    return {
+      showPopup: false,
+    };
+  },
   computed: {
     cartProducts() {
       const cartStore = useCartStore();
       return cartStore.cart;
     },
 
-    // Group items by product_id and count their quantity
     groupedCartProducts() {
       const grouped = [];
       this.cartProducts.forEach(product => {
         const existingProduct = grouped.find(item => item.product_id === product.product_id);
         if (existingProduct) {
-          existingProduct.quantity += 1;  // Increase quantity if the product is already in the list
+          existingProduct.quantity += 1;
         } else {
-          grouped.push({ ...product, quantity: 1 });  // Add new product with quantity 1
+          grouped.push({ ...product, quantity: 1 });
         }
       });
       return grouped;
     },
 
-    // Calculate total price based on quantity and price per item
     totalPrice() {
       return this.groupedCartProducts.reduce((total, item) => {
-        return total + item.price * item.quantity; // Multiply price by quantity and add to total
+        return total + item.price * item.quantity;
       }, 0);
     },
+  },
+  setup() {
+    const router = useRouter();
+    return { router };
   },
   methods: {
     increaseQuantity(item) {
       const cartStore = useCartStore();
-      cartStore.addProduct(item); // Add one more instance of the item
+      cartStore.addProduct(item);
     },
 
     decreaseQuantity(item) {
       const cartStore = useCartStore();
-      cartStore.removeProduct(item.product_id); // Decrease quantity by removing one instance
+      cartStore.removeProduct(item.product_id);
     },
 
     removeAllOfItem(productId) {
       const cartStore = useCartStore();
-      cartStore.removeProduct(productId, true); // Remove all instances of the item
+      cartStore.removeProduct(productId, true);
+    },
+
+    placeOrder() {
+      const cartStore = useCartStore();
+      const router = useRouter();
+
+      cartStore.clearCart();
+      this.showPopup = true;
+
+      this.$nextTick(() => { //redirect after next DOM update
+        setTimeout(() => {
+          this.showPopup = false;
+          router.push("/shop");
+        }, 3000);
+      });
+    },
+
+    closePopup() {
+      this.showPopup = false;
     },
   },
 };
@@ -98,7 +136,7 @@ export default {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #ccc;
-  padding: 15px 0;
+  padding: 15px;
 }
 
 .cart-img {
@@ -128,5 +166,21 @@ export default {
 .total-price {
   margin-top: 20px;
   font-weight: bold;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+.popup button {
+  margin-top: 10px;
+  padding: 10px 20px;
 }
 </style>

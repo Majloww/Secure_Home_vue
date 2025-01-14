@@ -17,18 +17,17 @@ export default {
 </script>
 
 <style scoped>
-/* Ensure the body has no horizontal overflow */
 body {
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  margin: 0;
-  padding: 0;
-}
-
-#app {
-  width: 100%; /* Full width of its container */
-  max-width: 100%; /* Prevents any overflow */
   overflow-x: hidden;
   margin: 0;
   padding: 0;
+  color: #2c3e50;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
 }
 </style>

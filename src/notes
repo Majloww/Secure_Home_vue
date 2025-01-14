@@ -1,4 +1,4 @@
-dorobit aby header aj footer bol na celu dlzku obrazovky
+DONE dorobit aby header aj footer bol na celu dlzku obrazovky
 
 DONE make maths for number of same items added to cart.
 DONE add plus and minus buttons to add or remove by one item in cart and add remove to remove each of the same item from cart
@@ -6,12 +6,43 @@ DONE add plus and minus buttons to add or remove by one item in cart and add rem
 DONE on refresh keep the items in the cart.
 DONE create review, write into db
 when GETting reviews from db, need endpoint in refreshreviews reviewpage
-create order button
-after order throw all out and maybe remove them from database
+DONE create order button
+DONE after order throw all out
+maybe remove them from database
 
-.container urobit wheat color, body urobit dark gray
+reusable components: product cards
+
+
+struktura:
+      header
+     container
+-------------------
+col     col     col
+add  container  add
+-------------------
+      footer
+    foot-cont
 
 add:
 Derived State with Getters:
-
     Calculate totals, tax, or discounts dynamically without duplicating logic in multiple components.
+
+ideas
+Alert/Notification Component
+What it does: A reusable component for displaying alerts (success, error, info) that pops up when certain actions are performed, such as adding an item to the cart or successful login.
+Reusable Purpose: Can be used throughout the app for different notifications, ensuring consistent styling.
+
+Button Component
+What it does: A simple button component with various styles and states (primary, secondary, disabled, loading, etc.). It could accept props like color, size, and text.
+Reusable Purpose: Can be reused anywhere on the site, from form submissions to adding products to the cart.
+
+Loading Spinner
+What it does: A reusable component that shows a loading indicator (such as a spinner) while waiting for data (e.g., product data, search results).
+Reusable Purpose: Can be used throughout the app during asynchronous operations.
+
+Form Input Component
+What it does: A reusable input field that can be customized for text, email, password, and other types. It could include validation, error messages, and styling.
+Reusable Purpose: Reusable across login forms, sign-up forms, checkout forms, or any place where users need to input information.
+
+
+DONE footer reviews link router

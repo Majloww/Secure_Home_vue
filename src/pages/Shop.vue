@@ -1,27 +1,17 @@
 <template>
   <div v-if="products.length > 0" class="container" id="main-cont">
-    <!-- Popup for item added to cart -->
     <div v-if="showPopup" class="popup" :style="popupStyle">
       <p>Item added to cart!</p>
     </div>
 
     <br><br>
     <div class="row">
-      <div class="col-md-4" v-for="product in products" :key="product.product_id">
-        <div class="card">
-          <img
-              class="card-img-top"
-              :src="`src/images/${product.product_id}.jpg`"
-              :alt="product.title"
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{ product.title }}</h5>
-            <p class="card-text">{{ product.description }}</p>
-            <p class="card-text">Price: ${{ product.price }}</p>
-            <p class="card-text">Available: {{ product.quantity }}</p>
-            <button class="btn btn-primary" @click="addToCart(product, $event)">Add to Cart</button>
-          </div>
-        </div>
+      <!--item cards loop-->
+      <div class="col-md-4 col-sm-6 col-12 mb-4" v-for="product in products" :key="product.product_id">
+        <ProductCard
+            :product="product"
+            @show-popup="showPopupMessage"
+        />
       </div>
     </div>
   </div>
@@ -32,22 +22,24 @@
 
 <script>
 import axios from 'axios';
-import { useCartStore } from '@/stores/cart';
+import ProductCard from '@/components/ProductCard.vue';
 
 export default {
   name: "Shop",
+  components: {
+    ProductCard,
+  },
   data() {
     return {
       products: [],
-      showPopup: false,  // State to track if the popup should be shown
-      popupStyle: {}     // Style for the popup (dynamic position)
+      showPopup: false,
+      popupStyle: {}
     };
   },
   methods: {
-    // Fetch products from PHP backend
     fetchProducts() {
       axios
-          .get("http://localhost/eshop/fetch-products.php") // Adjust to your PHP file's URL
+          .get("http://localhost/eshop/fetch-products.php")
           .then((response) => {
             console.log(response.data);
             this.products = response.data;
@@ -57,30 +49,21 @@ export default {
           });
     },
 
-    // Add product to cart
-    addToCart(product, event) {
-      const cartStore = useCartStore();
-      cartStore.addProduct(product); // Pinia store function to add the product to the cart
-
-      // Get the position of the button relative to the viewport
-      const buttonRect = event.target.getBoundingClientRect();
-
-      // Show the popup near the button (5px to the right of the button)
+    showPopupMessage(position) {
       this.showPopup = true;
       this.popupStyle = {
-        top: `${buttonRect.top + window.scrollY - 100}px`,  // Position above the button
-        left: `${buttonRect.left + window.scrollX + buttonRect.width + 45}px`, // 5px to the right of the button
+        top: `${position.top}px`,
+        left: `${position.left}px`,
         position: 'absolute',
       };
 
-      // Hide the popup after 2 seconds
       setTimeout(() => {
         this.showPopup = false;
       }, 2000);
     },
   },
   created() {
-    this.fetchProducts(); // Fetch products on component creation
+    this.fetchProducts();
   },
 };
 </script>
@@ -98,24 +81,14 @@ h5 {
   font-weight: bold;
 }
 
-.card {
-  margin-bottom: 20px;
-}
-
-.card img {
-  max-height: 200px;
-  object-fit: cover;
-}
-
-/* Styling for the popup */
 .popup {
-  position: absolute; /* Absolute position relative to the document */
+  position: absolute;
   background-color: #28a745;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  transform: translateX(-50%); /* Center the popup horizontally */
+  transform: translateX(-50%);
 }
 </style>

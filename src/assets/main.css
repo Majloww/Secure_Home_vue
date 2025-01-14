@@ -9,9 +9,7 @@
 /* Remove max-width on #app to allow full width */
 #app {
     width: 100%; /* Full width of its parent container */
-    max-width: 1200px; /* Allow app to stretch across the screen */
-    margin: 0 auto;
-    padding: 2rem; /* Padding is okay if it's consistent */
+    max-width: 100%; /* Allow app to stretch across the screen */
     font-weight: normal;
 }
 
@@ -39,9 +37,5 @@ a,
     body {
         display: flex;
         place-items: center;
-    }
-
-    #app {
-        padding: 0 2rem;
     }
 }
