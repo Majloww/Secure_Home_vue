@@ -23,6 +23,7 @@ Welcome to **Secure Home e-shop**, an imaginary workshop with plenty of products
 
 ## File Structure
 
+```
 src/
 ├── assets/
 ├── components/
@@ -33,6 +34,7 @@ src/
 ├── utils/
 ├── App.vue
 └── main.js
+```
 
 ## How to set up
 
@@ -52,5 +54,5 @@ npm install
 ```
 npm run dev
 ```
-5. Access the application
+5. Access the application<br>
 You should see a `http://localhost:5173/` link or something similar, click on it, or paste it into a browser. Now, you should see the website.
