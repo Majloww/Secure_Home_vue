@@ -21,22 +21,36 @@ Welcome to **Secure Home e-shop**, an imaginary workshop with plenty of products
 - Version Control: Git, GitHub
 - Development Tools: PHPStorm
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## File Structure
 
-## Project Setup
+src/
+├── assets/
+├── components/
+├── images/
+├── pages/
+├── router/
+├── stores/
+├── utils/
+├── App.vue
+└── main.js
 
-```sh
+## How to set up
+
+1. Clone the repository
+```bash
+git clone https://github.com/Majloww/Secure_Home_vue.git
+```
+2. Move into project folder
+```
+cd Secure_Home_vue
+```
+3. Install dependencies
+```
 npm install
 ```
-
-### Compile and Hot-Reload for Development
-
-```sh
+4. Run the development server
+```
 npm run dev
 ```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
+5. Access the application
+You should see a `http://localhost:5173/` link or something similar, click on it, or paste it into a browser. Now, you should see the website.
