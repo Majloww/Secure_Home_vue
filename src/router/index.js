@@ -1,16 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HomePage from "@/pages/HomePage.vue";  // Your main home page component
+import HomePage from "@/pages/HomePage.vue";
 import Shop from "@/pages/Shop.vue";
-import reviewPage from "@/pages/ReviewPage.vue";
 import Cart from "@/pages/Cart.vue";
+import ReviewPage from "@/pages/ReviewPage.vue";
+import FAQPage from "@/pages/FAQPage.vue";
+import ProfilePage from "@/pages/ProfilePage.vue";
 
 // Define the routes
 const routes = [
     {
         path: '/',
         name: 'Home',
-        component: HomePage,  // Route to the Home page
-        meta: { requiresAuth: true },  // Add a meta field to track authentication
+        component: HomePage,
     },
     {
         path: '/shop',
@@ -20,19 +21,28 @@ const routes = [
     {
         path: '/review',
         name: 'Review',
-        component: reviewPage
+        component: ReviewPage
     },
     {
         path: '/cart',
         name: 'Cart',
         component: Cart
+    },
+    {
+        path: '/faq',
+        name: 'FAQ',
+        component: FAQPage
+    },
+    {
+        path: '/profile',
+        name: 'Profile',
+        component: ProfilePage
     }
 ];
 
-// Create the router instance and pass the `routes` configuration
 const router = createRouter({
-    history: createWebHistory(),  // Use the web history mode (HTML5 history API)
-    routes,  // Define the routes
+    history: createWebHistory(),
+    routes,
 });
 
-export default router;  // Export the router
+export default router;

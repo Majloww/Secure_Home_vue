@@ -116,12 +116,14 @@ export default {
       cartStore.clearCart();
       this.showPopup = true;
 
+      /*
       this.$nextTick(() => { //redirect after next DOM update
         setTimeout(() => {
           this.showPopup = false;
           router.push("/shop");
         }, 3000);
       });
+      */
     },
 
     closePopup() {

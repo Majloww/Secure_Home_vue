@@ -50,26 +50,20 @@
       <br/>
       <button type="submit" class="btn btn-dark">Submit</button>
     </form>
-    <div v-if="showPopup" id="overlay">
-      <div id="popup">
-        <p>Thank you for your feedback!</p>
-        <button @click="hidePopup" class="btn btn-dark">Close</button>
-      </div>
-    </div>
+
+    <!-- Use Popup component here -->
+    <Popup :visible="showPopup" @update:visible="showPopup = $event" message="Thank you for your feedback!" />
   </div>
 </template>
 
 <script>
-import {handleStarClick} from "@/utils/rating";
+import { handleStarClick } from "@/utils/rating";
+import Popup from "@/components/Popup.vue";
 
 export default {
-  mounted() {
-    const stars = document.querySelectorAll(".stars svg");
-    handleStarClick(stars, (rating) => {
-      this.reviewData.rating = rating;
-    });
+  components: {
+    Popup,
   },
-
   data() {
     return {
       reviewData: {
@@ -86,14 +80,12 @@ export default {
       this.reviewData.rating = rating;
     },
     async submitReview() {
-      console.log("Submitted")
       try {
         if (!this.reviewData.agree) {
           alert("You must agree to the terms to submit a review.");
           return;
         }
 
-        //DEBUG SEND DATA TO DB
         console.log("Sending data:", this.reviewData);
 
         const response = await fetch("http://localhost/eshop/submit-review.php", {
@@ -102,9 +94,9 @@ export default {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            choice: this.reviewData.choice, // Country ID
-            rating: this.reviewData.rating, // Rating (1-5)
-            comment: this.reviewData.comment, // User's review comment
+            choice: this.reviewData.choice,
+            rating: this.reviewData.rating,
+            comment: this.reviewData.comment,
           }),
         });
 
@@ -112,28 +104,26 @@ export default {
 
         if (result.success) {
           this.showPopup = true;
-          // Reset form data
           this.reviewData = { choice: "", rating: 0, comment: "", agree: false };
         } else {
-          alert(result.error || "An error occurred. Please try again.");
+          alert(result.error || "Error");
         }
       } catch (error) {
         console.error("Error submitting review:", error);
-        alert("An error occurred. Please try again.");
+        alert("Error");
       }
     },
-    hidePopup() {
-      this.showPopup = false;
-    },
-  }
+  },
+  mounted() {
+    const stars = document.querySelectorAll(".stars svg");
+    handleStarClick(stars, (rating) => {
+      this.reviewData.rating = rating;
+    });
+  },
 };
 </script>
 
 <style scoped>
-#review-cont {
-  padding: 100px;
-}
-
 h5 {
   font-weight: bold;
   color: white;
@@ -181,31 +171,6 @@ textarea {
 
 button {
   margin-top: 20px;
-}
-
-/* Popup styles */
-#overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-}
-
-#popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  text-align: center;
-  z-index: 10000;
 }
 
 /* Switch styles */
@@ -266,28 +231,6 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-}
-
-#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-#popup {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: 300px;
 }
 
 #popup button {

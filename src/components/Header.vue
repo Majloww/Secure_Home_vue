@@ -47,9 +47,8 @@
               <span class="dropdown-item-text">{{ username }}</span>
               <hr/>
               <router-link class="dropdown-item" to="/profile">Profile</router-link>
-              <router-link class="dropdown-item" to="/qaa">Q&A</router-link>
+              <router-link class="dropdown-item" to="/faq">Q&A</router-link>
               <router-link class="dropdown-item" to="/review">Review</router-link>
-              <router-link class="dropdown-item">Log out</router-link>
             </div>
           </li>
         </ul>

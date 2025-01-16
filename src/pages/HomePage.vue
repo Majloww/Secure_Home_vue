@@ -1,15 +1,17 @@
 <template>
   <div class="container" id="main-cont">
     <div id="main-page">
+
+      <!--Carousel-->
       <Carousel/>
 
-      <!-- Description Section -->
+      <!--Description Section-->
       <div class="container" id="desc-cont">
         <h1>Secure home</h1>
         <h2>Your go-to destination for global home security solutions.</h2>
       </div>
 
-      <!-- Text and Image Section -->
+      <!--Text and Image Section-->
       <div class="container">
         <div class="row">
           <div class="col-md-6 d-flex" id="text-col">
@@ -32,22 +34,9 @@
         </div>
       </div>
 
-      <!-- Table Section -->
+      <!--List Section-->
       <div class="container">
-        <ul class="list-group">
-          <li class="list-group-item list-group-item-success">
-            We make the best security devices in central Europe and proudly stand by this!
-          </li>
-          <li class="list-group-item">We ship to almost every country in the world!</li>
-          <li class="list-group-item">We have a wide variety of security devices in stock!</li>
-          <li class="list-group-item">
-            Our customer support is available <span style="color: red; font-weight: bold;">24/7</span>
-          </li>
-          <li class="list-group-item">
-            When ordering in Slovakia, you can opt for free installation by our expert team!
-            <span class="blink" style="color: orangered;">Offer is available until 31.12.2023</span>
-          </li>
-        </ul>
+        <List :items="textItems"/>
       </div>
     </div>
   </div>
@@ -55,16 +44,37 @@
 
 <script>
 import Carousel from "@/components/Carousel.vue";
+import List from "@/components/List.vue";
 
 export default {
   name: "MainPage",
   components: {
     Carousel,
+    List,
+  },
+  data() {
+    return {
+      textItems: [
+        "We make the best security devices in central Europe and proudly stand by them!",
+        "We ship to almost every country in the world!",
+        "We have a wide variety of security devices in stock!",
+        "Our customer support is available 24/7.",
+        "When ordering in Slovakia, you can opt for free installation by our expert team! Offer is available until 31.12.2023.",
+      ],
+    };
   },
 };
 </script>
 
 <style scoped>
+h1{
+  font-size: 70px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
 #desc-cont {
   margin-top: 100px;
   margin-bottom: 200px;
